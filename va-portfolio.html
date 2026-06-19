@@ -1,0 +1,1795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Virtual Assistant Portfolio | n8n Automation · WhatsApp Business</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ─── DESIGN SYSTEM ─────────────────────────────────────── */
+:root {
+  --bg:           #F9F8F5;
+  --bg-alt:       #F2F0EA;
+  --bg-dark:      #0E0C1A;
+  --bg-dark-2:    #1A1730;
+  --violet:       #7C3AED;
+  --violet-light: #A78BFA;
+  --violet-dark:  #5B21B6;
+  --emerald:      #059669;
+  --emerald-light:#34D399;
+  --amber:        #D97706;
+  --amber-light:  #FCD34D;
+  --red-soft:     #DC2626;
+  --text:         #1C1917;
+  --text-2:       #44403C;
+  --text-3:       #78716C;
+  --border:       #E7E5E0;
+  --white:        #FFFFFF;
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  --radius:    12px;
+  --radius-lg: 20px;
+  --shadow:    0 1px 3px rgba(0,0,0,0.07), 0 4px 12px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.10), 0 8px 32px rgba(0,0,0,0.07);
+}
+
+/* ─── RESET ─────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  font-size: 16px;
+}
+img { max-width: 100%; }
+a { color: inherit; }
+
+/* ─── TYPOGRAPHY ─────────────────────────────────────────── */
+h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.2; }
+h1 { font-size: clamp(2.4rem, 5vw, 4.2rem); font-weight: 700; }
+h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 600; }
+h3 { font-size: clamp(1.2rem, 2vw, 1.45rem); font-weight: 600; }
+h4 { font-size: 1.05rem; font-weight: 600; }
+p  { color: var(--text-2); }
+
+/* ─── LAYOUT ─────────────────────────────────────────────── */
+.container { max-width: 1080px; margin: 0 auto; padding: 0 2rem; }
+.section    { padding: 5rem 0; }
+.section-alt { background: var(--bg-alt); }
+
+/* ─── SECTION LABEL ──────────────────────────────────────── */
+.lbl {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--violet);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.lbl::before {
+  content: '';
+  width: 22px;
+  height: 2px;
+  background: var(--violet);
+  flex-shrink: 0;
+}
+.lbl.center { justify-content: center; }
+.lbl.center::before { display: none; }
+.lbl.light { color: var(--violet-light); }
+
+/* ════════════════════════════════════════════
+   HERO
+════════════════════════════════════════════ */
+.hero {
+  background: var(--bg-dark);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 5rem 0;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(124,58,237,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124,58,237,0.07) 1px, transparent 1px);
+  background-size: 56px 56px;
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 2; max-width: 700px; }
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(124,58,237,0.15);
+  border: 1px solid rgba(124,58,237,0.35);
+  padding: 0.38rem 1rem;
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--violet-light);
+  margin-bottom: 1.75rem;
+  letter-spacing: 0.04em;
+}
+.hero-badge span { display: inline-block; width: 8px; height: 8px; background: #4ADE80; border-radius: 50%; }
+
+.hero h1 { color: var(--white); margin-bottom: 0.25rem; }
+.hero h1 em { color: var(--violet-light); font-style: normal; }
+
+.hero-subtitle {
+  font-family: var(--font-mono);
+  color: var(--emerald-light);
+  font-size: 0.95rem;
+  margin-bottom: 1.75rem;
+  letter-spacing: 0.04em;
+}
+
+.hero-tagline {
+  color: rgba(255,255,255,0.68);
+  font-size: 1.1rem;
+  max-width: 580px;
+  margin-bottom: 2.5rem;
+  line-height: 1.75;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--white);
+  display: block;
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+.stat-lbl {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.45);
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+}
+
+.hero-actions { display: flex; gap: 0.875rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--violet); color: #fff;
+  padding: 0.875rem 2rem; border-radius: 9px;
+  font-family: var(--font-display); font-weight: 600; font-size: 0.95rem;
+  text-decoration: none; transition: background 0.18s, transform 0.18s;
+}
+.btn-primary:hover { background: var(--violet-dark); transform: translateY(-1px); }
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: transparent; color: rgba(255,255,255,0.78);
+  border: 1px solid rgba(255,255,255,0.18);
+  padding: 0.875rem 2rem; border-radius: 9px;
+  font-family: var(--font-display); font-weight: 500; font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.hero-tags { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+.hero-tag {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 0.32rem 0.875rem;
+  border-radius: 100px;
+  font-size: 0.76rem;
+  color: rgba(255,255,255,0.5);
+  font-family: var(--font-mono);
+}
+
+/* ════════════════════════════════════════════
+   BIO
+════════════════════════════════════════════ */
+.bio-grid {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 4rem;
+  align-items: start;
+}
+.bio-text h2 { margin-bottom: 1.25rem; }
+.bio-text p  { margin-bottom: 1rem; font-size: 1.02rem; line-height: 1.78; }
+.bio-text p:last-child { margin-bottom: 0; }
+
+.bio-sidebar .card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 1.625rem;
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow);
+}
+.card-title {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--violet);
+  margin-bottom: 0.875rem;
+}
+.card-list { list-style: none; }
+.card-list li {
+  padding: 0.35rem 0;
+  font-size: 0.875rem;
+  color: var(--text-2);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  line-height: 1.5;
+}
+.card-list li::before {
+  content: '→';
+  color: var(--emerald);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ════════════════════════════════════════════
+   SERVICES
+════════════════════════════════════════════ */
+.services-intro { text-align: center; max-width: 580px; margin: 0 auto 3.5rem; }
+.services-intro h2 { margin-bottom: 0.75rem; }
+
+.svc-block { margin-bottom: 4.5rem; }
+.svc-block:last-child { margin-bottom: 0; }
+
+.svc-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--border);
+}
+.svc-icon-wrap {
+  width: 50px; height: 50px;
+  border-radius: 13px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; flex-shrink: 0;
+}
+.ic-v { background: rgba(124,58,237,0.1); }
+.ic-e { background: rgba(5,150,105,0.1); }
+
+.svc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 1.125rem;
+}
+.svc-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.svc-card:hover { box-shadow: var(--shadow-md); border-color: rgba(124,58,237,0.3); }
+.svc-card-ico { font-size: 1.5rem; margin-bottom: 0.75rem; line-height: 1; }
+.svc-card h4  { margin-bottom: 0.5rem; }
+.svc-card p   { font-size: 0.875rem; line-height: 1.65; }
+.dot-list { list-style: none; margin-top: 0.75rem; }
+.dot-list li {
+  font-size: 0.82rem;
+  color: var(--text-3);
+  padding: 0.2rem 0;
+  display: flex; align-items: flex-start; gap: 0.4rem; line-height: 1.5;
+}
+.dot-list li::before { content: '·'; color: var(--emerald); font-size: 1.3rem; line-height: 1; flex-shrink: 0; }
+
+/* Automation Example Cards */
+.auto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 1.125rem;
+  margin-top: 1.75rem;
+}
+.auto-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.auto-head {
+  background: linear-gradient(135deg, rgba(124,58,237,0.06), rgba(5,150,105,0.06));
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+.auto-head h4 { font-size: 0.95rem; color: var(--text); }
+.auto-body { padding: 1.25rem; }
+.pso { margin-bottom: 0.7rem; }
+.pso:last-child { margin-bottom: 0; }
+.pso-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.22rem;
+}
+.pso-tag.p { color: var(--red-soft); }
+.pso-tag.s { color: var(--violet); }
+.pso-tag.o { color: var(--emerald); }
+.pso p { font-size: 0.845rem; line-height: 1.6; }
+
+/* WhatsApp Cards */
+.wa-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1.125rem;
+}
+.wa-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--emerald);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 1.375rem;
+}
+.wa-card h4 { margin-bottom: 0.75rem; font-size: 0.95rem; }
+.wa-card ul { list-style: none; }
+.wa-card ul li {
+  font-size: 0.845rem;
+  color: var(--text-2);
+  padding: 0.25rem 0;
+  display: flex; align-items: flex-start; gap: 0.5rem; line-height: 1.5;
+}
+.wa-card ul li::before { content: '✓'; color: var(--emerald); font-size: 0.8rem; flex-shrink: 0; margin-top: 2px; }
+
+/* ════════════════════════════════════════════
+   SKILLS MATRIX
+════════════════════════════════════════════ */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1.375rem;
+}
+.skills-cat {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+}
+.skills-cat h4 {
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--bg-alt);
+  font-size: 1rem;
+}
+.sk {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.475rem 0;
+  border-bottom: 1px solid var(--bg-alt);
+  font-size: 0.865rem;
+}
+.sk:last-child { border-bottom: none; }
+.sk-name { color: var(--text-2); }
+.badge {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  padding: 0.18rem 0.6rem;
+  border-radius: 100px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.b-ex { background: rgba(124,58,237,0.1); color: var(--violet); }
+.b-av { background: rgba(5,150,105,0.1);  color: var(--emerald); }
+.b-in { background: rgba(217,119,6,0.1);  color: var(--amber); }
+
+/* ════════════════════════════════════════════
+   PORTFOLIO PROJECTS
+════════════════════════════════════════════ */
+.proj-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow);
+}
+.proj-head {
+  padding: 2rem 2rem 1.75rem;
+  border-bottom: 1px solid var(--border);
+}
+.proj-num {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-3);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.625rem;
+}
+.proj-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.875rem; }
+.ptag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  padding: 0.2rem 0.7rem;
+  border-radius: 100px;
+  background: rgba(124,58,237,0.08);
+  color: var(--violet);
+  border: 1px solid rgba(124,58,237,0.2);
+}
+.ptag.e {
+  background: rgba(5,150,105,0.08);
+  color: var(--emerald);
+  border-color: rgba(5,150,105,0.2);
+}
+.proj-head h3 { margin-bottom: 0.5rem; }
+.proj-head > p { font-size: 0.9rem; }
+
+.proj-body { padding: 2rem; }
+.proj-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+.mini-lbl {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-3);
+  margin-bottom: 0.5rem;
+}
+.proj-txt { font-size: 0.875rem; color: var(--text-2); line-height: 1.7; }
+
+/* Workflow Diagram */
+.flow-box {
+  margin: 1.625rem 0;
+  background: linear-gradient(135deg, rgba(124,58,237,0.04), rgba(5,150,105,0.04));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.375rem 1.5rem;
+}
+.flow-lbl {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--violet);
+  margin-bottom: 0.875rem;
+}
+.flow-steps {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0;
+  row-gap: 0.5rem;
+}
+.fstep { display: flex; align-items: center; }
+.fnode {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  white-space: nowrap;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.fn-t { border-color: var(--violet); color: var(--violet); background: rgba(124,58,237,0.04); }
+.fn-a { border-color: var(--emerald); color: var(--emerald); background: rgba(5,150,105,0.04); }
+.fn-o { border-color: var(--amber); color: var(--amber); background: rgba(217,119,6,0.04); }
+.farrow { color: var(--text-3); font-size: 0.78rem; padding: 0 0.3rem; font-family: var(--font-mono); }
+
+/* Results */
+.results-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.875rem;
+  margin-top: 1.375rem;
+}
+.res-card {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  text-align: center;
+}
+.res-val {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--violet);
+  display: block;
+  line-height: 1.1;
+  margin-bottom: 0.375rem;
+}
+.res-lbl { font-size: 0.73rem; color: var(--text-3); line-height: 1.4; }
+
+/* ════════════════════════════════════════════
+   TOOLS STACK
+════════════════════════════════════════════ */
+.tools-cat { margin-bottom: 2.25rem; }
+.tc-name {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+}
+.tc-name::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.chips { display: flex; gap: 0.7rem; flex-wrap: wrap; }
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 0.55rem 0.9rem;
+  font-size: 0.855rem;
+  font-weight: 500;
+  color: var(--text);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+.dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.dv { background: var(--violet); }
+.de { background: var(--emerald); }
+.da { background: var(--amber); }
+
+/* ════════════════════════════════════════════
+   WHY HIRE ME
+════════════════════════════════════════════ */
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+.why-col-title {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-3);
+  margin-bottom: 1.25rem;
+}
+.adv-list { list-style: none; }
+.adv-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.adv-item:first-child { border-top: 1px solid var(--border); }
+.adv-ico {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  background: rgba(124,58,237,0.09);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; flex-shrink: 0;
+}
+.adv-text h4 { font-size: 0.95rem; margin-bottom: 0.25rem; }
+.adv-text p  { font-size: 0.85rem; line-height: 1.6; }
+
+.ben-cards { display: grid; gap: 0.875rem; }
+.ben-card {
+  background: var(--bg-dark);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.125rem;
+}
+.ben-val {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--white);
+  white-space: nowrap;
+  min-width: 56px;
+}
+.ben-desc { color: rgba(255,255,255,0.65); font-size: 0.855rem; line-height: 1.5; }
+
+/* ════════════════════════════════════════════
+   TESTIMONIALS
+════════════════════════════════════════════ */
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 1.375rem;
+}
+.testi-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  position: relative;
+  box-shadow: var(--shadow);
+}
+.testi-card::before {
+  content: '\201C';
+  position: absolute;
+  top: 0.875rem;
+  right: 1.375rem;
+  font-family: Georgia, serif;
+  font-size: 4rem;
+  color: var(--bg-alt);
+  line-height: 1;
+  pointer-events: none;
+}
+.stars { color: #F59E0B; font-size: 0.8rem; letter-spacing: 0.15em; margin-bottom: 1rem; }
+.testi-text {
+  font-size: 0.875rem;
+  color: var(--text-2);
+  line-height: 1.75;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+  position: relative; z-index: 1;
+}
+.testi-author { display: flex; align-items: center; gap: 0.75rem; }
+.avatar {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700; font-size: 0.95rem;
+  color: var(--white); flex-shrink: 0;
+}
+.av1 { background: var(--violet); }
+.av2 { background: var(--emerald); }
+.av3 { background: var(--amber); }
+.av4 { background: #0EA5E9; }
+.author-name { font-weight: 600; font-size: 0.875rem; }
+.author-role { font-size: 0.775rem; color: var(--text-3); }
+
+/* ════════════════════════════════════════════
+   CTA
+════════════════════════════════════════════ */
+.cta-section {
+  background: var(--bg-dark);
+  padding: 6rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(124,58,237,0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124,58,237,0.055) 1px, transparent 1px);
+  background-size: 56px 56px;
+  pointer-events: none;
+}
+.cta-section::after {
+  content: '';
+  position: absolute;
+  bottom: -150px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px; height: 400px;
+  background: radial-gradient(circle, rgba(5,150,105,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta-section .container { position: relative; z-index: 2; }
+.cta-section h2 { color: var(--white); margin-bottom: 1rem; }
+.cta-section > .container > p {
+  color: rgba(255,255,255,0.62);
+  font-size: 1.08rem;
+  max-width: 580px;
+  margin: 0 auto 2.25rem;
+  line-height: 1.75;
+}
+.cta-pills {
+  display: flex;
+  justify-content: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+.cpill {
+  background: rgba(124,58,237,0.18);
+  border: 1px solid rgba(124,58,237,0.38);
+  color: var(--violet-light);
+  padding: 0.38rem 1.125rem;
+  border-radius: 100px;
+  font-size: 0.845rem;
+  font-family: var(--font-mono);
+}
+.cta-btns { display: flex; justify-content: center; gap: 0.875rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.btn-cta {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--violet); color: #fff;
+  padding: 0.95rem 2.25rem; border-radius: 10px;
+  font-family: var(--font-display); font-weight: 600; font-size: 0.975rem;
+  text-decoration: none; transition: background 0.18s, transform 0.18s;
+}
+.btn-cta:hover { background: var(--violet-dark); transform: translateY(-1px); }
+.btn-cta-wa {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: #059669; color: #fff;
+  padding: 0.95rem 2.25rem; border-radius: 10px;
+  font-family: var(--font-display); font-weight: 600; font-size: 0.975rem;
+  text-decoration: none;
+}
+.cta-contact {
+  color: rgba(255,255,255,0.35);
+  font-size: 0.83rem;
+  font-family: var(--font-mono);
+  line-height: 2;
+}
+.cta-contact span { color: rgba(255,255,255,0.65); }
+
+/* ─── FOOTER ─────────────────────────────────────────────── */
+footer {
+  background: #07060F;
+  padding: 1.5rem 0;
+  text-align: center;
+}
+footer p {
+  color: rgba(255,255,255,0.22);
+  font-size: 0.76rem;
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 820px) {
+  .bio-grid    { grid-template-columns: 1fr; }
+  .proj-cols   { grid-template-columns: 1fr; }
+  .why-grid    { grid-template-columns: 1fr; }
+  .flow-steps  { flex-direction: column; align-items: flex-start; }
+  .farrow      { transform: rotate(90deg); }
+}
+@media (max-width: 560px) {
+  .container { padding: 0 1.25rem; }
+  .hero      { padding: 4rem 0; }
+  .section   { padding: 3.5rem 0; }
+  .proj-body { padding: 1.25rem; }
+  .proj-head { padding: 1.25rem; }
+}
+
+/* ─── PRINT ──────────────────────────────────────────────── */
+@media print {
+  body       { background: #fff; }
+  .hero      { min-height: auto; padding: 3rem 0; }
+  .section   { padding: 2.5rem 0; }
+  .hero::before, .hero::after,
+  .cta-section::before, .cta-section::after { display: none; }
+  .proj-card, .testi-card, .cta-section { break-inside: avoid; }
+  .svc-card  { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 1 · COVER / HERO
+════════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span></span> Available for New Projects &nbsp;·&nbsp; Remote &amp; Async-Friendly
+      </div>
+
+      <h1>[ViaAutomation Solutions]<br><em>Virtual Assistant</em></h1>
+
+      <div class="hero-subtitle">
+        // n8n Automation Specialist &nbsp;·&nbsp; WhatsApp Business Expert
+      </div>
+
+      <p class="hero-tagline">
+        I help businesses streamline operations, automate repetitive tasks, and improve customer communication — so you can focus on growth, not busywork.
+      </p>
+
+      <div class="hero-stats">
+        <div>
+          <span class="stat-num">50+</span>
+          <span class="stat-lbl">Workflows Built</span>
+        </div>
+        <div>
+          <span class="stat-num">30+</span>
+          <span class="stat-lbl">Clients Supported</span>
+        </div>
+        <div>
+          <span class="stat-num">15+</span>
+          <span class="stat-lbl">Hours Saved/Week</span>
+        </div>
+        <div>
+          <span class="stat-num">100%</span>
+          <span class="stat-lbl">Satisfaction Rate</span>
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">📩 Hire Me Now</a>
+        <a href="#services" class="btn-outline">View My Services →</a>
+      </div>
+
+      <div class="hero-tags">
+        <span class="hero-tag">Virtual Assistance</span>
+        <span class="hero-tag">n8n Automation</span>
+        <span class="hero-tag">WhatsApp Business</span>
+        <span class="hero-tag">CRM Management</span>
+        <span class="hero-tag">Lead Generation</span>
+        <span class="hero-tag">AI Productivity</span>
+        <span class="hero-tag">Google Workspace</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 2 · PROFESSIONAL BIO
+════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="lbl">About Me</div>
+    <div class="bio-grid">
+
+      <div class="bio-text">
+        <h2>I Turn Business Chaos Into Smooth, Automated Systems</h2>
+        <p>
+          I'm a results-driven Virtual Assistant with deep expertise in business operations, workflow automation, and WhatsApp Business optimization. I don't just handle tasks — I build <em>systems</em> that handle tasks, so your business can operate efficiently even when you're not at your desk.
+        </p>
+        <p>
+          With hands-on experience supporting small businesses, agencies, coaches, and e-commerce brands, I've developed a sharp eye for spotting inefficiencies — and an obsession with eliminating them. My approach combines traditional VA excellence with modern automation tools, particularly n8n, to deliver solutions that are both smart and sustainable.
+        </p>
+        <p>
+          My technology-first mindset means I'm not just following instructions — I'm actively engineering better processes. Whether it's designing a lead-capture automation that responds to prospects in seconds, setting up a WhatsApp Business profile that converts inquiries into paying clients, or building a full client onboarding system that runs on autopilot, I bring precision, initiative, and a deep commitment to your business outcomes.
+        </p>
+        <p>
+          Clients hire me because they're overwhelmed, disorganized, or stuck doing manually what a smart workflow could handle automatically. They keep working with me because I deliver, I communicate clearly, and I make their businesses <strong>measurably better.</strong>
+        </p>
+      </div>
+
+      <div class="bio-sidebar">
+        <div class="card">
+          <div class="card-title">🎯 Specializations</div>
+          <ul class="card-list">
+            <li>Administrative &amp; Business Support</li>
+            <li>n8n Workflow Automation</li>
+            <li>WhatsApp Business Setup</li>
+            <li>CRM Management &amp; Optimization</li>
+            <li>Lead Generation Systems</li>
+            <li>AI-Powered Productivity</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">🤝 I Work With</div>
+          <ul class="card-list">
+            <li>Small Business Owners</li>
+            <li>Real Estate Agencies</li>
+            <li>Coaches &amp; Consultants</li>
+            <li>E-commerce Businesses</li>
+            <li>Startups &amp; Digital Agencies</li>
+            <li>Online Educators</li>
+            <li>Service Providers &amp; Recruiters</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">📍 Availability</div>
+          <ul class="card-list">
+            <li>Part-time &amp; full-time engagements</li>
+            <li>Project-based contracts</li>
+            <li>Ongoing retainer support</li>
+            <li>Async or real-time collaboration</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 3–5 · CORE SERVICES
+════════════════════════════════════════════════════════ -->
+<section class="section section-alt" id="services">
+  <div class="container">
+    <div class="lbl">Core Services</div>
+    <div class="services-intro">
+      <h2>What I Can Do For Your Business</h2>
+      <p>Three interconnected service pillars — each powerful on its own, even more powerful combined.</p>
+    </div>
+
+    <!-- ── 3A: VIRTUAL ASSISTANT SERVICES ───────────── -->
+    <div class="svc-block">
+      <div class="svc-header">
+        <div class="svc-icon-wrap ic-v">🗂️</div>
+        <div>
+          <h3>Virtual Assistant Services</h3>
+          <p style="font-size:0.875rem;">Professional administrative support across all business operations</p>
+        </div>
+      </div>
+      <div class="svc-grid">
+
+        <div class="svc-card">
+          <div class="svc-card-ico">📧</div>
+          <h4>Email Management</h4>
+          <p>Inbox zero, every day. I sort, prioritize, draft responses, and manage your email so nothing important is ever missed.</p>
+          <ul class="dot-list">
+            <li>Inbox organization &amp; custom labeling</li>
+            <li>Response drafting &amp; priority filtering</li>
+            <li>Spam management &amp; folder structure</li>
+            <li>Email template library creation</li>
+          </ul>
+        </div>
+
+        <div class="svc-card">
+          <div class="svc-card-ico">📅</div>
+          <h4>Calendar Management</h4>
+          <p>Never double-book or miss a meeting. I own your schedule so you can own your priorities.</p>
+          <ul class="dot-list">
+            <li>Meeting scheduling &amp; coordination</li>
+            <li>Appointment reminders &amp; prep</li>
+            <li>Travel time blocking</li>
+            <li>Calendar conflict resolution</li>
+          </ul>
+        </div>
+
+        <div class="svc-card">
+          <div class="svc-card-ico">📊</div>
+          <h4>Data Entry &amp; Management</h4>
+          <p>Accurate, organized, and up-to-date records. I handle the data so you can make better decisions.</p>
+          <ul class="dot-list">
+            <li>Database maintenance &amp; auditing</li>
+            <li>Spreadsheet management</li>
+            <li>Report generation &amp; formatting</li>
+            <li>Data cleaning &amp; standardization</li>
+          </ul>
+        </div>
+
+        <div class="svc-card">
+          <div class="svc-card-ico">🔍</div>
+          <h4>Research &amp; Reporting</h4>
+          <p>In-depth research delivered in clear, actionable formats — saving you hours of digging.</p>
+          <ul class="dot-list">
+            <li>Market research &amp; analysis</li>
+            <li>Competitor landscape reviews</li>
+            <li>Lead list building</li>
+            <li>Custom industry reports</li>
+          </ul>
+        </div>
+
+        <div class="svc-card">
+          <div class="svc-card-ico">👥</div>
+          <h4>CRM Management</h4>
+          <p>Your customer relationships are your most valuable asset. I keep your CRM clean, current, and useful.</p>
+          <ul class="dot-list">
+            <li>Contact entry, updates &amp; deduplication</li>
+            <li>Pipeline &amp; deal stage management</li>
+            <li>Follow-up task tracking</li>
+            <li>CRM setup &amp; configuration</li>
+          </ul>
+        </div>
+
+        <div class="svc-card">
+          <div class="svc-card-ico">💬</div>
+          <h4>Customer Support</h4>
+          <p>Fast, professional responses that turn inquiries into satisfied, loyal customers.</p>
+          <ul class="dot-list">
+            <li>Inquiry handling &amp; response drafts</li>
+            <li>Complaint resolution management</li>
+            <li>Customer follow-up sequences</li>
+            <li>Ticket &amp; helpdesk management</li>
+          </ul>
+        </div>
+
+        <div class="svc-card">
+          <div class="svc-card-ico">📋</div>
+          <h4>Project Coordination</h4>
+          <p>Keep projects moving, teams aligned, and deadlines met — without the chaos.</p>
+          <ul class="dot-list">
+            <li>Task assignment &amp; tracking</li>
+            <li>Timeline &amp; milestone management</li>
+            <li>Status reporting &amp; updates</li>
+            <li>Cross-team coordination</li>
+          </ul>
+        </div>
+
+        <div class="svc-card">
+          <div class="svc-card-ico">📝</div>
+          <h4>Documentation &amp; SOPs</h4>
+          <p>Clear, professional documents and templates that standardize your operations and reduce dependency on any one person.</p>
+          <ul class="dot-list">
+            <li>SOP writing &amp; formatting</li>
+            <li>Process documentation</li>
+            <li>Presentation preparation</li>
+            <li>Business template creation</li>
+          </ul>
+        </div>
+
+        <div class="svc-card">
+          <div class="svc-card-ico">🎯</div>
+          <h4>Lead Generation</h4>
+          <p>Finding, qualifying, and organizing prospects so your sales team focuses on closing, not searching.</p>
+          <ul class="dot-list">
+            <li>Targeted lead list building</li>
+            <li>LinkedIn prospecting</li>
+            <li>Lead scoring &amp; qualification</li>
+            <li>Outreach sequence coordination</li>
+          </ul>
+        </div>
+
+      </div>
+    </div><!-- /svc-block VA -->
+
+    <!-- ── 3B: N8N AUTOMATION SERVICES ──────────────── -->
+    <div class="svc-block">
+      <div class="svc-header">
+        <div class="svc-icon-wrap ic-v">⚡</div>
+        <div>
+          <h3>n8n Workflow Automation Services</h3>
+          <p style="font-size:0.875rem;">End-to-end automation design, build, and deployment using n8n</p>
+        </div>
+      </div>
+      <div class="svc-grid">
+
+        <div class="svc-card">
+          <div class="svc-card-ico">🗺️</div>
+          <h4>Workflow Design &amp; Consulting</h4>
+          <p>I analyze your current processes, map automation opportunities, and design workflows that eliminate manual work at every step.</p>
+          <ul class="dot-list">
+            <li>Business process mapping</li>
+            <li>Automation opportunity audit</li>
+            <li>Workflow architecture planning</li>
+            <li>ROI analysis for automation</li>
+          </ul>
+        </div>
+
+        <div class="svc-card">
+          <div class="svc-card-ico">🔗</div>
+          <h4>API &amp; App Integrations</h4>
+          <p>Connect your tools so data flows automatically between them — no more copy-pasting or manual syncing.</p>
+          <ul class="dot-list">
+            <li>WhatsApp · Gmail · Google Sheets</li>
+            <li>Calendars · CRMs · Web Forms</li>
+            <li>Notion · Trello · ClickUp · Airtable</li>
+            <li>REST APIs · Webhooks · Custom endpoints</li>
+          </ul>
+        </div>
+
+        <div class="svc-card">
+          <div class="svc-card-ico">🤖</div>
+          <h4>AI-Powered Automation</h4>
+          <p>Combine n8n with AI models to build smart workflows that can categorize, respond, summarize, and route decisions automatically.</p>
+          <ul class="dot-list">
+            <li>AI-powered email categorization</li>
+            <li>Auto-generated content &amp; summaries</li>
+            <li>Intelligent lead routing</li>
+            <li>ChatGPT &amp; AI chatbot integrations</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Automation Examples -->
+      <div style="margin-top: 2rem;">
+        <div class="lbl" style="color: var(--text-3); font-size:0.7rem;">Automation Examples — Problem · Solution · Outcome</div>
+      </div>
+      <div class="auto-grid">
+
+        <div class="auto-card">
+          <div class="auto-head"><h4>🎯 Lead Capture Automation</h4></div>
+          <div class="auto-body">
+            <div class="pso"><div class="pso-tag p">Problem</div><p>Leads from forms &amp; ads weren't reaching the sales team quickly, causing hours of delay and lost opportunities.</p></div>
+            <div class="pso"><div class="pso-tag s">Solution</div><p>n8n workflow captures form submissions, scores leads by predefined criteria, and sends an instant WhatsApp notification to the sales team.</p></div>
+            <div class="pso"><div class="pso-tag o">Outcome</div><p>Response time dropped from hours to under 2 minutes. Conversion rate improved by 35%.</p></div>
+          </div>
+        </div>
+
+        <div class="auto-card">
+          <div class="auto-head"><h4>📋 Client Onboarding Automation</h4></div>
+          <div class="auto-body">
+            <div class="pso"><div class="pso-tag p">Problem</div><p>New client onboarding took 4+ hours of manual work per client — welcome emails, folder creation, contract sending, CRM entry.</p></div>
+            <div class="pso"><div class="pso-tag s">Solution</div><p>Triggered on contract signature: creates Drive folder, sends welcome email, adds to CRM, and schedules kickoff call automatically.</p></div>
+            <div class="pso"><div class="pso-tag o">Outcome</div><p>Onboarding time reduced to 8 minutes. Client experience score improved significantly across the board.</p></div>
+          </div>
+        </div>
+
+        <div class="auto-card">
+          <div class="auto-head"><h4>📅 Appointment Scheduling Automation</h4></div>
+          <div class="auto-body">
+            <div class="pso"><div class="pso-tag p">Problem</div><p>Back-and-forth emails to schedule appointments consumed hours each week and still resulted in no-shows and missed meetings.</p></div>
+            <div class="pso"><div class="pso-tag s">Solution</div><p>n8n integration with Calendly: auto-sends booking confirmation, WhatsApp reminder 24hrs before, and creates Google Meet link.</p></div>
+            <div class="pso"><div class="pso-tag o">Outcome</div><p>No-show rate dropped by 60%. All scheduling-related admin tasks eliminated completely from the team's workload.</p></div>
+          </div>
+        </div>
+
+        <div class="auto-card">
+          <div class="auto-head"><h4>📲 WhatsApp Notification System</h4></div>
+          <div class="auto-body">
+            <div class="pso"><div class="pso-tag p">Problem</div><p>Critical business alerts (new orders, payments, form submissions) were buried in email and regularly missed by the team.</p></div>
+            <div class="pso"><div class="pso-tag s">Solution</div><p>n8n monitors all trigger events and delivers instant, formatted WhatsApp notifications to the right team members in real time.</p></div>
+            <div class="pso"><div class="pso-tag o">Outcome</div><p>100% alert visibility. Business owner's response time to critical events improved by 80%.</p></div>
+          </div>
+        </div>
+
+        <div class="auto-card">
+          <div class="auto-head"><h4>📊 CRM Synchronization Automation</h4></div>
+          <div class="auto-body">
+            <div class="pso"><div class="pso-tag p">Problem</div><p>Customer data existed in multiple disconnected tools — forms, spreadsheets, and email — with no single source of truth.</p></div>
+            <div class="pso"><div class="pso-tag s">Solution</div><p>n8n connects all sources to the CRM, deduplicates contacts, and keeps all records synchronized automatically in real time.</p></div>
+            <div class="pso"><div class="pso-tag o">Outcome</div><p>Zero data silos. Sales team always has complete, current customer information at their fingertips.</p></div>
+          </div>
+        </div>
+
+        <div class="auto-card">
+          <div class="auto-head"><h4>📈 Automated Weekly Reporting</h4></div>
+          <div class="auto-body">
+            <div class="pso"><div class="pso-tag p">Problem</div><p>Weekly business reports took 3+ hours to compile manually, pulling data from multiple dashboards and spreadsheets.</p></div>
+            <div class="pso"><div class="pso-tag s">Solution</div><p>n8n pulls all data sources every Monday morning, compiles the report in Google Sheets, and emails it to leadership automatically.</p></div>
+            <div class="pso"><div class="pso-tag o">Outcome</div><p>3 hours of weekly work eliminated entirely. Reports delivered at 8 AM Monday with zero manual effort.</p></div>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /svc-block n8n -->
+
+    <!-- ── 3C: WHATSAPP BUSINESS SERVICES ───────────── -->
+    <div class="svc-block">
+      <div class="svc-header">
+        <div class="svc-icon-wrap ic-e">💚</div>
+        <div>
+          <h3>WhatsApp Business Setup &amp; Optimization</h3>
+          <p style="font-size:0.875rem;">Turn WhatsApp into your most powerful customer communication channel</p>
+        </div>
+      </div>
+      <div class="wa-grid">
+
+        <div class="wa-card">
+          <h4>📱 Account Setup &amp; Profile</h4>
+          <ul>
+            <li>WhatsApp Business account creation</li>
+            <li>Professional profile optimization</li>
+            <li>Business category &amp; description</li>
+            <li>Contact details &amp; business hours</li>
+            <li>Profile photo &amp; branding alignment</li>
+          </ul>
+        </div>
+
+        <div class="wa-card">
+          <h4>🛍️ Product &amp; Service Catalog</h4>
+          <ul>
+            <li>Full product catalog setup</li>
+            <li>Service catalog configuration</li>
+            <li>Compelling product descriptions</li>
+            <li>Pricing &amp; image optimization</li>
+            <li>Logical category organization</li>
+          </ul>
+        </div>
+
+        <div class="wa-card">
+          <h4>💬 Messaging Automation</h4>
+          <ul>
+            <li>Professional greeting message</li>
+            <li>Away message configuration</li>
+            <li>Quick reply templates (10–20)</li>
+            <li>Keyword-triggered responses</li>
+            <li>Business hours auto-messaging</li>
+          </ul>
+        </div>
+
+        <div class="wa-card">
+          <h4>🔄 Customer Communication Flows</h4>
+          <ul>
+            <li>Lead inquiry response workflow</li>
+            <li>Appointment booking flow</li>
+            <li>Post-purchase follow-up</li>
+            <li>Support escalation structure</li>
+            <li>Re-engagement sequences</li>
+          </ul>
+        </div>
+
+        <div class="wa-card">
+          <h4>📈 Business Optimization</h4>
+          <ul>
+            <li>WhatsApp best practices audit</li>
+            <li>Conversion optimization</li>
+            <li>Customer engagement strategies</li>
+            <li>Contact label system setup</li>
+            <li>Performance review &amp; coaching</li>
+          </ul>
+        </div>
+
+      </div>
+    </div><!-- /svc-block WA -->
+
+  </div>
+</section><!-- /services -->
+
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 6 · SKILLS MATRIX
+════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="lbl">Expertise</div>
+    <h2 style="margin-bottom: 2.5rem;">Skills Matrix</h2>
+    <div class="skills-grid">
+
+      <div class="skills-cat">
+        <h4>🗂️ Virtual Assistance</h4>
+        <div class="sk"><span class="sk-name">Email Management</span><span class="badge b-ex">Expert</span></div>
+        <div class="sk"><span class="sk-name">Calendar Management</span><span class="badge b-ex">Expert</span></div>
+        <div class="sk"><span class="sk-name">Customer Service</span><span class="badge b-ex">Expert</span></div>
+        <div class="sk"><span class="sk-name">Data Entry &amp; Management</span><span class="badge b-ex">Expert</span></div>
+        <div class="sk"><span class="sk-name">Research</span><span class="badge b-av">Advanced</span></div>
+        <div class="sk"><span class="sk-name">Lead Generation</span><span class="badge b-av">Advanced</span></div>
+        <div class="sk"><span class="sk-name">Project Coordination</span><span class="badge b-av">Advanced</span></div>
+        <div class="sk"><span class="sk-name">SOP Documentation</span><span class="badge b-av">Advanced</span></div>
+      </div>
+
+      <div class="skills-cat">
+        <h4>⚡ Automation &amp; Tech</h4>
+        <div class="sk"><span class="sk-name">n8n</span><span class="badge b-ex">Expert</span></div>
+        <div class="sk"><span class="sk-name">WhatsApp Business</span><span class="badge b-ex">Expert</span></div>
+        <div class="sk"><span class="sk-name">Process Automation</span><span class="badge b-ex">Expert</span></div>
+        <div class="sk"><span class="sk-name">Workflow Design</span><span class="badge b-ex">Expert</span></div>
+        <div class="sk"><span class="sk-name">Webhook Integration</span><span class="badge b-av">Advanced</span></div>
+        <div class="sk"><span class="sk-name">API Integrations</span><span class="badge b-av">Advanced</span></div>
+        <div class="sk"><span class="sk-name">AI Tools Integration</span><span class="badge b-av">Advanced</span></div>
+        <div class="sk"><span class="sk-name">CRM Automation</span><span class="badge b-av">Advanced</span></div>
+      </div>
+
+      <div class="skills-cat">
+        <h4>🔧 Business Tools</h4>
+        <div class="sk"><span class="sk-name">Google Workspace</span><span class="badge b-ex">Expert</span></div>
+        <div class="sk"><span class="sk-name">Microsoft Office 365</span><span class="badge b-ex">Expert</span></div>
+        <div class="sk"><span class="sk-name">Notion</span><span class="badge b-ex">Expert</span></div>
+        <div class="sk"><span class="sk-name">HubSpot CRM</span><span class="badge b-av">Advanced</span></div>
+        <div class="sk"><span class="sk-name">GoHighLevel</span><span class="badge b-av">Advanced</span></div>
+        <div class="sk"><span class="sk-name">Trello / Asana</span><span class="badge b-av">Advanced</span></div>
+        <div class="sk"><span class="sk-name">ClickUp</span><span class="badge b-av">Advanced</span></div>
+        <div class="sk"><span class="sk-name">Airtable</span><span class="badge b-in">Intermediate</span></div>
+      </div>
+
+      <div class="skills-cat">
+        <h4>🤝 Communication &amp; Soft Skills</h4>
+        <div class="sk"><span class="sk-name">Written Communication</span><span class="badge b-ex">Expert</span></div>
+        <div class="sk"><span class="sk-name">Client Relationship Management</span><span class="badge b-ex">Expert</span></div>
+        <div class="sk"><span class="sk-name">Time Management</span><span class="badge b-ex">Expert</span></div>
+        <div class="sk"><span class="sk-name">Attention to Detail</span><span class="badge b-ex">Expert</span></div>
+        <div class="sk"><span class="sk-name">Problem Solving</span><span class="badge b-ex">Expert</span></div>
+        <div class="sk"><span class="sk-name">Organization</span><span class="badge b-ex">Expert</span></div>
+        <div class="sk"><span class="sk-name">Zoom / Google Meet</span><span class="badge b-ex">Expert</span></div>
+        <div class="sk"><span class="sk-name">Slack</span><span class="badge b-av">Advanced</span></div>
+      </div>
+
+    </div>
+    <div style="margin-top: 1.5rem; display: flex; gap: 1.25rem; flex-wrap: wrap;">
+      <span style="display:flex;align-items:center;gap:0.4rem;font-size:0.8rem;color:var(--text-3);">
+        <span class="badge b-ex">Expert</span> Full professional mastery
+      </span>
+      <span style="display:flex;align-items:center;gap:0.4rem;font-size:0.8rem;color:var(--text-3);">
+        <span class="badge b-av">Advanced</span> Strong working proficiency
+      </span>
+      <span style="display:flex;align-items:center;gap:0.4rem;font-size:0.8rem;color:var(--text-3);">
+        <span class="badge b-in">Intermediate</span> Functional with growth trajectory
+      </span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     PAGES 7–10 · PORTFOLIO PROJECTS
+════════════════════════════════════════════════════════ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="lbl">Portfolio</div>
+    <h2 style="margin-bottom: 2.5rem;">Real Projects. Real Results.</h2>
+
+    <!-- ── PROJECT 01 ─────────────────────────────────── -->
+    <div class="proj-card">
+      <div class="proj-head">
+        <div class="proj-num">PROJECT 01</div>
+        <div class="proj-tags">
+          <span class="ptag">n8n</span>
+          <span class="ptag">WhatsApp Business</span>
+          <span class="ptag e">Google Sheets</span>
+          <span class="ptag e">CRM Integration</span>
+        </div>
+        <h3>Lead Management Automation System</h3>
+        <p>Automated the entire lead capture-to-contact pipeline for a real estate agency — reducing response time from 6 hours to under 2 minutes.</p>
+      </div>
+      <div class="proj-body">
+        <div class="proj-cols">
+          <div>
+            <div class="mini-lbl">The Challenge</div>
+            <p class="proj-txt">A real estate agency was receiving 50+ leads daily from Facebook Ads, their website form, and WhatsApp. Leads were manually copied into a spreadsheet — taking 2–3 hours each day. Worse, no one was following up quickly, meaning leads regularly went cold before the sales team even knew they existed.</p>
+          </div>
+          <div>
+            <div class="mini-lbl">The Solution</div>
+            <p class="proj-txt">Built an n8n automation that captures all incoming leads from every source simultaneously, scores them against predefined criteria, logs them to Google Sheets with full contact details, adds them to the CRM, and instantly sends a personalized WhatsApp message to the prospect — all within 90 seconds of submission.</p>
+          </div>
+        </div>
+
+        <div class="flow-box">
+          <div class="flow-lbl">// n8n Automation Workflow</div>
+          <div class="flow-steps">
+            <div class="fstep"><div class="fnode fn-t">Form Submit / FB Lead</div><span class="farrow">→</span></div>
+            <div class="fstep"><div class="fnode fn-a">n8n Webhook</div><span class="farrow">→</span></div>
+            <div class="fstep"><div class="fnode fn-a">Lead Scoring</div><span class="farrow">→</span></div>
+            <div class="fstep"><div class="fnode fn-a">Google Sheets Log</div><span class="farrow">→</span></div>
+            <div class="fstep"><div class="fnode fn-a">CRM Entry</div><span class="farrow">→</span></div>
+            <div class="fstep"><div class="fnode fn-o">WhatsApp Auto-Reply</div></div>
+          </div>
+        </div>
+
+        <div class="mini-lbl" style="margin-top: 1.5rem;">Results</div>
+        <div class="results-row">
+          <div class="res-card"><span class="res-val">2 min</span><div class="res-lbl">Average Lead Response Time</div></div>
+          <div class="res-card"><span class="res-val">3 hrs</span><div class="res-lbl">Daily Admin Work Saved</div></div>
+          <div class="res-card"><span class="res-val">35%</span><div class="res-lbl">Lead Conversion Increase</div></div>
+          <div class="res-card"><span class="res-val">0</span><div class="res-lbl">Leads Lost to Slow Follow-up</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PROJECT 02 ─────────────────────────────────── -->
+    <div class="proj-card">
+      <div class="proj-head">
+        <div class="proj-num">PROJECT 02</div>
+        <div class="proj-tags">
+          <span class="ptag">n8n</span>
+          <span class="ptag">Google Drive</span>
+          <span class="ptag e">Gmail</span>
+          <span class="ptag e">Typeform</span>
+          <span class="ptag">ClickUp</span>
+        </div>
+        <h3>Automated Client Onboarding System</h3>
+        <p>Designed and deployed a fully automated client onboarding workflow for a digital marketing agency — reducing onboarding time by 95% per client.</p>
+      </div>
+      <div class="proj-body">
+        <div class="proj-cols">
+          <div>
+            <div class="mini-lbl">The Challenge</div>
+            <p class="proj-txt">Every time a new client signed a contract, the account manager manually: sent a welcome email, created a Google Drive folder structure, added the client to ClickUp, scheduled the kickoff call, and sent login credentials. This consumed 4+ hours per client and was prone to omissions and inconsistency across team members.</p>
+          </div>
+          <div>
+            <div class="mini-lbl">The Solution</div>
+            <p class="proj-txt">Built a trigger-based n8n workflow that fires the moment a contract is signed in their e-signature tool. It automatically creates a branded Drive folder, sends a personalized welcome email, adds the client to ClickUp with their project template pre-loaded, and sends the kickoff meeting link — all in under 8 minutes with zero human involvement.</p>
+          </div>
+        </div>
+
+        <div class="flow-box">
+          <div class="flow-lbl">// n8n Automation Workflow</div>
+          <div class="flow-steps">
+            <div class="fstep"><div class="fnode fn-t">Contract Signed</div><span class="farrow">→</span></div>
+            <div class="fstep"><div class="fnode fn-a">Create Drive Folder</div><span class="farrow">→</span></div>
+            <div class="fstep"><div class="fnode fn-a">Send Welcome Email</div><span class="farrow">→</span></div>
+            <div class="fstep"><div class="fnode fn-a">Add to ClickUp</div><span class="farrow">→</span></div>
+            <div class="fstep"><div class="fnode fn-a">CRM Update</div><span class="farrow">→</span></div>
+            <div class="fstep"><div class="fnode fn-o">Schedule Kickoff</div></div>
+          </div>
+        </div>
+
+        <div class="mini-lbl" style="margin-top: 1.5rem;">Results</div>
+        <div class="results-row">
+          <div class="res-card"><span class="res-val">8 min</span><div class="res-lbl">Full Onboarding Duration</div></div>
+          <div class="res-card"><span class="res-val">95%</span><div class="res-lbl">Reduction in Manual Work</div></div>
+          <div class="res-card"><span class="res-val">4 hrs</span><div class="res-lbl">Saved Per New Client</div></div>
+          <div class="res-card"><span class="res-val">100%</span><div class="res-lbl">Process Consistency</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PROJECT 03 ─────────────────────────────────── -->
+    <div class="proj-card">
+      <div class="proj-head">
+        <div class="proj-num">PROJECT 03</div>
+        <div class="proj-tags">
+          <span class="ptag e">WhatsApp Business</span>
+          <span class="ptag e">Customer Experience</span>
+          <span class="ptag">Automation Setup</span>
+        </div>
+        <h3>WhatsApp Business Optimization &amp; Setup</h3>
+        <p>Transformed a local service business's WhatsApp from an unmanaged personal number into a professional, automated customer communication channel — boosting booking conversions by 40%.</p>
+      </div>
+      <div class="proj-body">
+        <div class="proj-cols">
+          <div>
+            <div class="mini-lbl">Initial State</div>
+            <p class="proj-txt">A local beauty salon was using a personal WhatsApp number for all business communication. No profile setup, no catalog, no greeting messages, no quick replies. Customers would message and often wait hours for a response. Bookings were regularly lost to faster-responding competitors, and the business looked less professional than it was.</p>
+          </div>
+          <div>
+            <div class="mini-lbl">Improvements Made</div>
+            <p class="proj-txt">Set up WhatsApp Business with a complete, branded profile, a full service catalog with photos and pricing, a warm greeting message, professional away message for out-of-hours, and 15 quick-reply shortcuts for the most common customer questions. Also configured a guided inquiry-to-booking flow that walks customers step by step.</p>
+          </div>
+        </div>
+
+        <div class="proj-cols" style="margin-top: 1.5rem;">
+          <div>
+            <div class="mini-lbl">Automation Opportunities Added</div>
+            <ul style="list-style:none;margin-top:0.5rem;">
+              <li style="padding:0.35rem 0;font-size:0.875rem;color:var(--text-2);display:flex;gap:0.6rem;align-items:flex-start;"><span style="color:var(--emerald);flex-shrink:0;">✓</span>Instant greeting when customer first messages</li>
+              <li style="padding:0.35rem 0;font-size:0.875rem;color:var(--text-2);display:flex;gap:0.6rem;align-items:flex-start;"><span style="color:var(--emerald);flex-shrink:0;">✓</span>Away message with realistic response time</li>
+              <li style="padding:0.35rem 0;font-size:0.875rem;color:var(--text-2);display:flex;gap:0.6rem;align-items:flex-start;"><span style="color:var(--emerald);flex-shrink:0;">✓</span>Quick replies for pricing, availability &amp; location</li>
+              <li style="padding:0.35rem 0;font-size:0.875rem;color:var(--text-2);display:flex;gap:0.6rem;align-items:flex-start;"><span style="color:var(--emerald);flex-shrink:0;">✓</span>Appointment confirmation template message</li>
+              <li style="padding:0.35rem 0;font-size:0.875rem;color:var(--text-2);display:flex;gap:0.6rem;align-items:flex-start;"><span style="color:var(--emerald);flex-shrink:0;">✓</span>Post-appointment follow-up &amp; review request</li>
+              <li style="padding:0.35rem 0;font-size:0.875rem;color:var(--text-2);display:flex;gap:0.6rem;align-items:flex-start;"><span style="color:var(--emerald);flex-shrink:0;">✓</span>Contact label system for customer segments</li>
+            </ul>
+          </div>
+          <div>
+            <div class="mini-lbl">Business Impact</div>
+            <div class="results-row" style="margin-top: 0.5rem;">
+              <div class="res-card"><span class="res-val">40%</span><div class="res-lbl">More Booking Conversions</div></div>
+              <div class="res-card"><span class="res-val">70%</span><div class="res-lbl">Faster Customer Response</div></div>
+              <div class="res-card"><span class="res-val">15</span><div class="res-lbl">Quick Reply Templates Built</div></div>
+              <div class="res-card"><span class="res-val">4.9★</span><div class="res-lbl">Client Satisfaction Rating</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PROJECT 04 ─────────────────────────────────── -->
+    <div class="proj-card">
+      <div class="proj-head">
+        <div class="proj-num">PROJECT 04</div>
+        <div class="proj-tags">
+          <span class="ptag e">Calendar Management</span>
+          <span class="ptag e">Email Organization</span>
+          <span class="ptag">Notion</span>
+          <span class="ptag">Process Design</span>
+        </div>
+        <h3>Executive Administrative Support System</h3>
+        <p>Built and maintained a complete administrative operations system for a coach managing 3 businesses — giving them back 20+ hours per week and eliminating all missed appointments.</p>
+      </div>
+      <div class="proj-body">
+        <div class="proj-cols">
+          <div>
+            <div class="mini-lbl">Calendar Management System</div>
+            <p class="proj-txt" style="margin-bottom:0.75rem;">Designed a color-coded master calendar across three businesses in Google Calendar. Implemented a weekly planning protocol: Monday review, daily check-ins, 48-hour scheduling buffer, and automatic travel time blocked between appointments. Integrated Calendly for self-booking with pre-set availability rules.</p>
+            <p class="proj-txt">Eliminated all double-bookings and reduced meeting conflicts by 100%. Client went from 3 missed meetings per month to zero.</p>
+          </div>
+          <div>
+            <div class="mini-lbl">Email Organization System</div>
+            <p class="proj-txt" style="margin-bottom:0.75rem;">Restructured 3 email inboxes with a clear labeling taxonomy, priority filters, a 12-template response library, and a 4-business-hour SLA. Set up email delegation, unsubscribed from 80+ marketing lists, and implemented a "daily digest" system for low-priority items.</p>
+            <p class="proj-txt">Inbox management time dropped from 3 hours/day to 45 minutes. Zero important emails missed since implementation.</p>
+          </div>
+        </div>
+
+        <div class="proj-cols" style="margin-top: 1.5rem;">
+          <div>
+            <div class="mini-lbl">Task Tracking &amp; Notion Workspace</div>
+            <p class="proj-txt">Built a comprehensive Notion workspace including: master task database, project pipeline views, weekly review templates, a client tracker, and a real-time priorities dashboard. Synced with Google Calendar for deadline visibility across all three businesses.</p>
+          </div>
+          <div>
+            <div class="mini-lbl">Overall Results</div>
+            <div class="results-row" style="margin-top: 0.5rem;">
+              <div class="res-card"><span class="res-val">20+</span><div class="res-lbl">Hours Returned Per Week</div></div>
+              <div class="res-card"><span class="res-val">0</span><div class="res-lbl">Missed Appointments</div></div>
+              <div class="res-card"><span class="res-val">4hrs</span><div class="res-lbl">Email Response SLA</div></div>
+              <div class="res-card"><span class="res-val">3→1</span><div class="res-lbl">System Consolidation</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 11 · TOOLS & TECHNOLOGY STACK
+════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="lbl">Tech Stack</div>
+    <h2 style="margin-bottom: 2.5rem;">Tools &amp; Technology</h2>
+
+    <div class="tools-cat">
+      <div class="tc-name">Automation</div>
+      <div class="chips">
+        <span class="chip"><span class="dot dv"></span>n8n</span>
+        <span class="chip"><span class="dot dv"></span>Webhooks</span>
+        <span class="chip"><span class="dot dv"></span>REST APIs</span>
+        <span class="chip"><span class="dot dv"></span>Zapier</span>
+        <span class="chip"><span class="dot dv"></span>Make (Integromat)</span>
+      </div>
+    </div>
+
+    <div class="tools-cat">
+      <div class="tc-name">Google Workspace</div>
+      <div class="chips">
+        <span class="chip"><span class="dot de"></span>Google Sheets</span>
+        <span class="chip"><span class="dot de"></span>Google Drive</span>
+        <span class="chip"><span class="dot de"></span>Gmail</span>
+        <span class="chip"><span class="dot de"></span>Google Calendar</span>
+        <span class="chip"><span class="dot de"></span>Google Docs</span>
+        <span class="chip"><span class="dot de"></span>Google Forms</span>
+        <span class="chip"><span class="dot de"></span>Google Meet</span>
+      </div>
+    </div>
+
+    <div class="tools-cat">
+      <div class="tc-name">Communication</div>
+      <div class="chips">
+        <span class="chip"><span class="dot de"></span>WhatsApp Business</span>
+        <span class="chip"><span class="dot dv"></span>Slack</span>
+        <span class="chip"><span class="dot dv"></span>Zoom</span>
+        <span class="chip"><span class="dot dv"></span>Microsoft Teams</span>
+        <span class="chip"><span class="dot dv"></span>Loom</span>
+      </div>
+    </div>
+
+    <div class="tools-cat">
+      <div class="tc-name">Project Management</div>
+      <div class="chips">
+        <span class="chip"><span class="dot da"></span>Notion</span>
+        <span class="chip"><span class="dot da"></span>Trello</span>
+        <span class="chip"><span class="dot da"></span>Asana</span>
+        <span class="chip"><span class="dot da"></span>ClickUp</span>
+        <span class="chip"><span class="dot da"></span>Airtable</span>
+        <span class="chip"><span class="dot da"></span>Monday.com</span>
+      </div>
+    </div>
+
+    <div class="tools-cat">
+      <div class="tc-name">CRM Systems</div>
+      <div class="chips">
+        <span class="chip"><span class="dot da"></span>HubSpot</span>
+        <span class="chip"><span class="dot da"></span>GoHighLevel</span>
+        <span class="chip"><span class="dot da"></span>Zoho CRM</span>
+        <span class="chip"><span class="dot da"></span>Pipedrive</span>
+        <span class="chip"><span class="dot da"></span>Salesforce (Basic)</span>
+      </div>
+    </div>
+
+    <div class="tools-cat">
+      <div class="tc-name">AI &amp; Productivity</div>
+      <div class="chips">
+        <span class="chip"><span class="dot dv"></span>ChatGPT / GPT-4</span>
+        <span class="chip"><span class="dot dv"></span>Claude AI</span>
+        <span class="chip"><span class="dot dv"></span>Notion AI</span>
+        <span class="chip"><span class="dot dv"></span>Otter.ai</span>
+        <span class="chip"><span class="dot dv"></span>Calendly / Cal.com</span>
+        <span class="chip"><span class="dot dv"></span>Grammarly</span>
+        <span class="chip"><span class="dot dv"></span>Typeform / Tally</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 12 · WHY HIRE ME
+════════════════════════════════════════════════════════ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="lbl">Why Me</div>
+    <h2 style="margin-bottom: 2.5rem;">Why Partner With Me?</h2>
+    <div class="why-grid">
+
+      <div>
+        <div class="why-col-title">My Advantages</div>
+        <ul class="adv-list">
+          <li class="adv-item">
+            <div class="adv-ico">🎯</div>
+            <div class="adv-text">
+              <h4>Detail-Oriented by Default</h4>
+              <p>I don't just complete tasks — I audit them. Every deliverable goes through a personal quality check before it reaches you. You won't need to double-check my work.</p>
+            </div>
+          </li>
+          <li class="adv-item">
+            <div class="adv-ico">⚡</div>
+            <div class="adv-text">
+              <h4>Automation-First Thinking</h4>
+              <p>When I encounter repetitive work, I immediately think about how to automate it. This mindset saves clients tens of hours every single month without any extra cost.</p>
+            </div>
+          </li>
+          <li class="adv-item">
+            <div class="adv-ico">🤝</div>
+            <div class="adv-text">
+              <h4>Reliable &amp; Consistent</h4>
+              <p>I meet deadlines without reminders, communicate proactively before problems arise, and treat your business with the same care and urgency I'd give my own.</p>
+            </div>
+          </li>
+          <li class="adv-item">
+            <div class="adv-ico">💡</div>
+            <div class="adv-text">
+              <h4>Solutions-Focused Partner</h4>
+              <p>I don't just report problems — I arrive with solutions. Clients describe working with me as a partnership, not a task queue. I bring initiative, not just execution.</p>
+            </div>
+          </li>
+          <li class="adv-item">
+            <div class="adv-ico">📱</div>
+            <div class="adv-text">
+              <h4>Tech-Savvy &amp; Always Learning</h4>
+              <p>I stay current with the latest tools, automation frameworks, and AI capabilities so your business always benefits from cutting-edge, efficient systems.</p>
+            </div>
+          </li>
+          <li class="adv-item">
+            <div class="adv-ico">💬</div>
+            <div class="adv-text">
+              <h4>Clear, Proactive Communicator</h4>
+              <p>Regular progress updates, no surprises, and clear status reports. You'll always know exactly where things stand — without having to ask.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="why-col-title">Business Benefits You Get</div>
+        <div class="ben-cards">
+          <div class="ben-card">
+            <div class="ben-val">15+</div>
+            <div class="ben-desc">Hours of manual work eliminated each week through smart automation and efficient support systems</div>
+          </div>
+          <div class="ben-card">
+            <div class="ben-val">2×</div>
+            <div class="ben-desc">Faster customer response times through automated WhatsApp flows and streamlined communication workflows</div>
+          </div>
+          <div class="ben-card">
+            <div class="ben-val">0</div>
+            <div class="ben-desc">Missed follow-ups, dropped leads, or overlooked tasks — everything is tracked, actioned, and documented</div>
+          </div>
+          <div class="ben-card">
+            <div class="ben-val">↑%</div>
+            <div class="ben-desc">Operational efficiency and scalability — your systems grow with your business, not against it</div>
+          </div>
+          <div class="ben-card">
+            <div class="ben-val">∞</div>
+            <div class="ben-desc">Peace of mind knowing your operations are in the hands of someone who treats your business like their own</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 13 · TESTIMONIALS
+════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="lbl">Client Feedback</div>
+    <h2 style="margin-bottom: 2.5rem;">What Clients Say</h2>
+    <div class="testi-grid">
+
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">
+          "Hiring [ViaAutomation Solutions] was the single best decision I made for my business this year. She set up our n8n lead automation and within the first week we had already stopped losing prospects to slow follow-ups. The WhatsApp setup was professional, fast, and exactly what we needed. Our sales team can now focus on closing deals — not chasing cold leads."
+        </p>
+        <div class="testi-author">
+          <div class="avatar av1">DM</div>
+          <div>
+            <div class="author-name">David M.</div>
+            <div class="author-role">CEO, Metro Properties Realty</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">
+          "I'm a business coach managing 40+ active clients and before [ViaAutomation Solutions], my calendar was a complete disaster. She restructured my entire scheduling system, automated my client onboarding workflow, and cleared 3 months of inbox backlog in a week. I've genuinely gotten back 20+ hours per week. This is the best investment I've made in my business operations."
+        </p>
+        <div class="testi-author">
+          <div class="avatar av2">SC</div>
+          <div>
+            <div class="author-name">Sarah C.</div>
+            <div class="author-role">Business Coach &amp; Consultant</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">
+          "We were honestly skeptical about automation at first — worried things would break or that customers would feel like they were talking to a robot. [ViaAutomation Solutions] set up our WhatsApp Business and n8n workflows so thoughtfully that customers actually compliment us on how responsive we are now. It's completely seamless. We look bigger and more professional than we are."
+        </p>
+        <div class="testi-author">
+          <div class="avatar av3">TR</div>
+          <div>
+            <div class="author-name">Tobi R.</div>
+            <div class="author-role">Founder, Radiance Skincare Studio</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">
+          "We run a fast-paced digital agency and needed someone who could keep up. [ViaAutomation Solutions] didn't just keep up — she got ahead. The CRM sync automation she built, the client onboarding system, the automated reporting — all of it runs in the background and just works. Our operations team has effectively doubled capacity without any additional hires. Remarkable."
+        </p>
+        <div class="testi-author">
+          <div class="avatar av4">JA</div>
+          <div>
+            <div class="author-name">James A.</div>
+            <div class="author-role">Director of Operations, Nexus Digital Agency</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 14 · CALL TO ACTION
+════════════════════════════════════════════════════════ -->
+<section class="cta-section" id="contact">
+  <div class="container">
+
+    <div class="lbl center light">Let's Work Together</div>
+    <h2>Ready to Streamline Your Business?</h2>
+    <p>
+      Let's automate the repetitive tasks, organize your operations, and build systems that free you to focus on what actually grows your business. Whether you need VA support, n8n automation, or WhatsApp Business setup — I'm ready to help.
+    </p>
+
+    <div class="cta-pills">
+      <span class="cpill">🗂️ Virtual Assistance</span>
+      <span class="cpill">⚡ n8n Automation</span>
+      <span class="cpill">💚 WhatsApp Business Setup</span>
+    </div>
+
+    <div class="cta-btns">
+      <a href="mailto:your@email.com" class="btn-cta">📩 Send Me an Email</a>
+      <a href="https://wa.me/yournumber" class="btn-cta-wa">💬 Chat on WhatsApp</a>
+    </div>
+
+    <div class="cta-contact">
+      📧 <span>your@email.com</span>
+      &nbsp;·&nbsp;
+      📱 <span>+234 XXX XXX XXXX</span>
+      &nbsp;·&nbsp;
+      🌐 <span>Upwork · Fiverr · LinkedIn</span>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>[ViaAutomation Solutions] &nbsp;·&nbsp; Virtual Assistant &nbsp;·&nbsp; n8n Automation Specialist &nbsp;·&nbsp; WhatsApp Business Expert &nbsp;·&nbsp; Portfolio 2025</p>
+  </div>
+</footer>
+
+</body>
+</html>
